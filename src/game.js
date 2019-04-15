@@ -1,6 +1,5 @@
 import Bubble from './bubble';
 import Player from './player';
-import Arrow from './arrow';
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
