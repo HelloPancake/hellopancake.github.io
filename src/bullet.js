@@ -19,12 +19,7 @@ class Bullet {
 
     }
 
-    // bulletConstraint() {
-        
-    //     if (this.bubbleY + this.dy < this.bubbleRadius || this.bubbleY + this.dy > this.canvas.height - this.bubbleRadius) {
-    //         this.dy = -(this.dy + this.grav);
-    //     }
-    // }
+   
 }
 
 export default Bullet;

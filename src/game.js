@@ -8,7 +8,7 @@ class Game {
         this.ctx = this.canvas.getContext("2d");
         this.player = new Player(this.ctx, this.canvas);
         this.draw = this.draw.bind(this);
-        this.bubbleNum = 2;
+        this.bubbleNum = 3;
         this.bulletNum = 3;
         this.bubblesArr = [];
         this.bulletsArr = [];
@@ -22,8 +22,9 @@ class Game {
             if(this.notHit){
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 this.player.drawPlayer();
+                // this.player.move();
                 this.bubblesArr.forEach(bub => bub.drawBubble());
-                // this.playerHitDetection();
+                this.playerHitDetection();
                 if(this.bulletsArr.length != 0){
                         this.bulletsArr.forEach(bullet => bullet.drawBullet());
                 }
@@ -31,6 +32,15 @@ class Game {
                 this.bulletCheck();
             }
         }
+        
+        // move() {
+        //     if (this.player.rightPressed && this.player.playerX < (this.canvas.width - this.player.playerWidth)) {
+        //         this.player.playerX += 5;
+        //     }
+        //     if (this.leftPressed && this.playerX > 0) {
+        //         this.player.playerX -= 5;
+        //     }
+        // }
         
         update(){
             this.hitBubble();
@@ -58,7 +68,7 @@ class Game {
                 for(var k = 0; k < this.bubblesArr.length; k++){
                     if(this.bulletsArr.length != 0 ){
                         for (let b = 0; b < this.bulletsArr.length; b++) {
-                            console.log(this.bubblesArr[k]);
+                            if (this.bubblesArr[k] != null){
                             let a = this.bubblesArr[k].bubbleRadius + this.bulletsArr[b].bulletRadius;
                             let x = this.bubblesArr[k].bubbleX - this.bulletsArr[b].bulletX;
                             let y = this.bubblesArr[k].bubbleY - this.bulletsArr[b].bulletY;
@@ -123,42 +133,10 @@ class Game {
                                     }
                                 }
                             }
-                        }   
-                    }
+                        }
+                    }   
                 }
-            
-            // for(var k = 0; k < this.bubblesArr.length; k++){
-            //     for (let b = 0; b < this.bulletsArr.length; b++) {
-            //         if (this.bulletsArr.length != 0 
-            //             &&((this.bulletsArr[b].bulletX + this.bulletsArr[0].bulletRadius) > (this.bubblesArr[k].bubbleX - this.bubblesArr[k].bubbleRadius)) 
-            //             && ((this.bulletsArr[b].bulletX - this.bulletsArr[0].bulletRadius) < (this.bubblesArr[k].bubbleX + this.bubblesArr[k].bubbleRadius)) 
-            //             && ((this.bulletsArr[b].bulletY + this.bulletsArr[0].bulletRadius) > (this.bubblesArr[k].bubbleY - this.bubblesArr[k].bubbleRadius))
-            //             && ((this.bulletsArr[b].bulletY - this.bulletsArr[0].bulletRadius) < (this.bubblesArr[k].bubbleY + this.bubblesArr[k].bubbleRadius))){
-            //                 if(k == 0){
-                                
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY , 3, -7));
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX - 60), this.bubblesArr[k].bubbleY, -3, -7));
-            //                     this.bubblesArr = this.bubblesArr.slice(1);
-            //                     this.bulletsArr = [];
-
-            //                 }
-            //                 else if(k == (this.bubblesArr.length - 1)){
-                                
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX - 60), this.bubblesArr[k].bubbleY, -3, -7));
-            //                     this.bubblesArr = this.bubblesArr.slice(0, k).concat(this.bubblesArr.slice(k + 1));
-            //                     this.bulletsArr = [];
-            //                 }
-            //                 else {
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
-            //                     this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX - 60), this.bubblesArr[k].bubbleY, -3, -7));
-            //                     this.bubblesArr = this.bubblesArr.slice(0, k).concat(this.bubblesArr.slice(k+1));
-            //                     this.bulletsArr = [];
-            //                 }
-            //             }
-            //         }
-            // }
-            
+            }
         }
 
         gameOver(){
@@ -178,7 +156,7 @@ class Game {
                 let distX = Math.abs(bubble.bubbleX - this.player.playerX - this.player.playerWidth / 2);
                 let distY = Math.abs(bubble.bubbleY - this.player.playerY - this.player.playerHeight / 2);
 
-                if (distX > ((this.player.playerWidth / 2) + bubble.bubbleRadius)) {
+                if (distX > (this.player.playerWidth / 2 + bubble.bubbleRadius)) {
                     return false;
                 }
                 if (distY > (this.player.playerHeight / 2 + bubble.bubbleRadius)) {
@@ -195,21 +173,12 @@ class Game {
                 let dx = distX - this.player.playerWidth / 2;
                 let dy = distY - this.player.playerHeight / 2;
                 return (dx * dx + dy * dy <= (bubble.bubbleRadius * bubble.bubbleRadius));
-               
-                // var distX = Math.abs(this.bubblesArr[k].bubbleX - this.player.playerX - (this.player.playerWidth / 2));
-                // var distY = Math.abs(this.bubblesArr[k].bubbleY - this.player.playerY - (this.player.playerHeight / 2));
-                // var dx = distX - this.player.playerWidth / 2;
-                // var dy = distY - this.player.playerHeight / 2;
-                
-                // if ((distX <= (this.player.playerWidth / 2)) || (distY <= (this.player.playerHeight / 2)) || (dx * dx + dy * dy <= (this.bubblesArr[k].bubbleRadius * this.bubblesArr[k].bubbleRadius))) {
-                //     console.log("you lose!");
-                // }
             
         }
 
         shootDownHandler(e) {
             if (e.key == " " && this.bulletsArr.length < 3) {
-                this.bulletsArr.push(new Bullet(this.ctx, this.canvas, this.player.playerX));
+                this.bulletsArr.push(new Bullet(this.ctx, this.canvas, this.player.playerX + this.player.playerWidth / 2));
             }
         }
 
