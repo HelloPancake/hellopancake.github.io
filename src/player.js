@@ -21,6 +21,9 @@ class Player{
         this.ctx.rect(this.playerX, this.playerY, this.playerWidth, this.playerHeight);
         this.ctx.fillStyle = "#0095DD";
         this.ctx.fill();
+        this.ctx.lineWidth = 1.5;
+        this.ctx.strokeStyle = "black";
+        this.ctx.stroke();
         this.ctx.closePath();
         
     }

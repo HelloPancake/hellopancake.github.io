@@ -22,7 +22,10 @@ class Bubble {
         this.bubbleConstraint();
         this.ctx.beginPath();
         this.ctx.arc(this.bubbleX, this.bubbleY, this.bubbleRadius, 0, Math.PI * 2);
-        this.ctx.strokeStyle = "#0095DD";
+        this.ctx.fillStyle = "#0095DD";
+        this.ctx.fill();
+        this.ctx.lineWidth = 1.5;
+        this.ctx.strokeStyle = "black";
         this.ctx.stroke();
         this.ctx.closePath();
         this.dy += this.grav;
