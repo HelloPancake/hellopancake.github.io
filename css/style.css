@@ -1,6 +1,29 @@
 .title {
     display: flex;
     justify-content: center;
+    font-size: 60pt;
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(14, 165, 82);
+}
+
+body {
+    background-image: url("../assets/images/Flat\ Night\ 2\ BG.png");
+    background-size: cover;
+}
+
+#myCanvas {
+    /* background-image: url("../assets/images/Flat\ Night\ 2\ BG.png");
+    background-size: cover; */
+    background-color: transparent;
+    border-radius: 2vh;
+   
+}
+
+.canvasDiv {
+    display: flex;
+    justify-content: center;
     align-content: center;
-    font-size: 70pt;
+    padding: 0;
+    
+    
 }
