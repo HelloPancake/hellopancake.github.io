@@ -7,15 +7,16 @@
 }
 
 body {
-    background-image: url("../assets/images/Flat\ Night\ 2\ BG.png");
+    /* background-image: url("../assets/images/Flat\ Night\ 2\ BG.png"); */
     background-size: cover;
 }
 
 #myCanvas {
     /* background-image: url("../assets/images/Flat\ Night\ 2\ BG.png");
     background-size: cover; */
-    background-color: transparent;
-    border-radius: 2vh;
+    background-image: url("../assets/images/rgbCanvas.png");
+    background-size: cover;
+    
    
 }
 
@@ -24,6 +25,20 @@ body {
     justify-content: center;
     align-content: center;
     padding: 0;
-    
-    
+}
+
+.startButton {
+  opacity:    0.5; 
+  background: #000; 
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   absolute; 
+}
+
+html {
+   background-color: #311d3e;
+   /* background-color: 322758; */
 }

@@ -8,7 +8,7 @@ class Game {
         this.ctx = this.canvas.getContext("2d");
         this.player = new Player(this.ctx, this.canvas);
         this.draw = this.draw.bind(this);
-        this.bubbleNum = 3;
+        this.bubbleNum = 1;
         this.bulletNum = 3;
         this.bubblesArr = [];
         this.bulletsArr = [];
@@ -108,6 +108,7 @@ class Game {
                             }
                                 else {
                                     if (k == 0) {
+                                        this.bubblesArr.push(new Bubble(this.ctx, this.canvas, 70, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
                                         this.bubblesArr = this.bubblesArr.slice(1);
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);
@@ -120,7 +121,8 @@ class Game {
                                         }
                                     }
                                     else {
-                                        
+                                        this.bubblesArr.push(new Bubble(this.ctx, this.canvas, 70, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
+
                                         this.bubblesArr = this.bubblesArr.slice(0, k).concat(this.bubblesArr.slice(k + 1));
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);

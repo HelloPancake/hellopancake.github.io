@@ -4,7 +4,7 @@ class Bullet {
         this.canvas = canvas;
         this.ctx = ctx;
         this.bulletX = x;
-        this.bulletY = 500;
+        this.bulletY = this.canvas.height;
         this.dy = -3;
         this.bulletRadius = 5;
     }
