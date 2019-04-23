@@ -12,7 +12,10 @@ class Bullet {
     drawBullet() {
         this.ctx.beginPath();
         this.ctx.arc(this.bulletX, this.bulletY, this.bulletRadius, 0, Math.PI * 2);
-        this.ctx.strokeStyle = "#0095DD";
+        this.ctx.fillStyle = "#FFFF54";
+        this.ctx.fill();
+        this.ctx.lineWidth = .7;
+        this.ctx.strokeStyle = "black";
         this.ctx.stroke();
         this.ctx.closePath();
         this.bulletY += this.dy;

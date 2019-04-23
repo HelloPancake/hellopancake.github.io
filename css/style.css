@@ -6,39 +6,195 @@
     color: rgb(14, 165, 82);
 }
 
-body {
-    /* background-image: url("../assets/images/Flat\ Night\ 2\ BG.png"); */
-    background-size: cover;
-}
-
-#myCanvas {
-    /* background-image: url("../assets/images/Flat\ Night\ 2\ BG.png");
-    background-size: cover; */
-    background-image: url("../assets/images/rgbCanvas.png");
-    background-size: cover;
-    
-   
-}
-
-.canvasDiv {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding: 0;
-}
-
-.startButton {
-  opacity:    0.5; 
-  background: #000; 
-  width:      100%;
-  height:     100%; 
-  z-index:    10;
-  top:        0; 
-  left:       0; 
-  position:   absolute; 
-}
-
 html {
    background-color: #311d3e;
    /* background-color: 322758; */
+}
+
+.gameContainer {
+    margin: auto;
+    padding: 0;
+    padding-top: 0;
+}
+
+
+/* canvas */
+
+#myCanvas {
+    background-image: url("../assets/images/rgbCanvas.png");
+    background-size: cover;
+    display: flex;
+    padding: 0;
+    margin-top: 5%;
+    align-content: center;
+}
+
+
+/* menu instructions and contents */
+
+.hello {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-top: 3.5vh;
+    font-size: 30pt;
+    text-align: center;
+}
+
+.shoot {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-top: 1vh;
+    font-size: 17pt;
+    text-align: center;
+}
+
+.move {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-top: 1vh;
+    font-size: 17pt;
+    text-align: center;
+}
+
+.enjoy {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    margin-top: 1vh;
+    font-size: 17pt;
+    text-align: center;
+}
+
+#startButton {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: rgb(111, 221, 111);
+    border-radius: 1vh;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+}
+
+/* retry Menu */
+
+#retryMenu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgb(226, 187, 231);
+    flex-direction: column;
+    width: 50%;
+    z-index: 2;
+    margin: 0;
+    top: 35%;
+    left: 25%;
+    border-radius: 1.5vh;
+    position: absolute;
+}
+
+#retryButton {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: rgb(120, 228, 134);
+    border-radius: 1vh;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+}
+
+#scoreList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+    flex-direction: column;
+    color: white;
+}
+
+#landingMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 151, 219);
+    flex-direction: row;
+    width: 50%;
+    z-index: 2;
+    margin: auto;
+    top: 25%;
+    left: 25%;
+    border-radius: 1.5vh;
+    position: absolute;
+    
+}
+
+#scoreBox {
+    display: flex;
+    
+}
+
+/* start menu */
+
+#startMenu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 151, 219);
+    flex-direction: column;
+    /* width: 50%;
+    z-index: 2;
+    margin: auto;
+    top: 25%;
+    left: 25%;
+    border-radius: 1.5vh;
+    position: absolute; */
+    
+}
+
+#highText {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+    margin-top: 2vh;
+    margin-bottom: .5vh;
+}
+
+#line {
+    background-color: azure;
+    height: 1px;
+    width: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+
+#initialSubmit {
+    display: flex;
+    background-color: white;
+    border-radius: .5vh;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+    width: 25%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+#initialSubmitButton {
+    padding-left: 3vh;
+    padding-right: 3vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    background-color: rgb(93, 134, 221);
+    border-radius: 1vh;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
 }

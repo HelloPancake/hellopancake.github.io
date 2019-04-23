@@ -12,6 +12,7 @@ class Game {
         this.bulletNum = 3;
         this.bubblesArr = [];
         this.bulletsArr = [];
+        this.score = 0;
         this.notHit = true;
         document.addEventListener("keydown", this.shootDownHandler.bind(this), false)
         for (var i = 0; i < this.bubbleNum; i++) {
@@ -23,30 +24,29 @@ class Game {
             if(this.notHit){
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 this.player.drawPlayer();
-                // this.player.move();
                 this.bubblesArr.forEach(bub => bub.drawBubble());
                 this.playerHitDetection();
                 if(this.bulletsArr.length != 0){
                         this.bulletsArr.forEach(bullet => bullet.drawBullet());
                 }
                 this.hitBubble();
+                this.drawScore();
                 this.bulletCheck();
             }
         }
-        
-        // move() {
-        //     if (this.player.rightPressed && this.player.playerX < (this.canvas.width - this.player.playerWidth)) {
-        //         this.player.playerX += 5;
-        //     }
-        //     if (this.leftPressed && this.playerX > 0) {
-        //         this.player.playerX -= 5;
-        //     }
-        // }
         
         update(){
             this.hitBubble();
         }
         
+        
+        drawScore() {
+            this.ctx.font = "30px Ubuntu";
+            this.ctx.fillStyle = "#90EE90";
+            this.ctx.fillText("Score: " + this.score, 8, 30);
+        }
+        
+
         bulletCheck() {
             for (let b = 0; b < this.bulletsArr.length; b++) {
                 if (this.bulletsArr[b].bulletY < 0) {
@@ -63,8 +63,6 @@ class Game {
             }
         }
 
-        
-        
         hitBubble(){
                 for(var k = 0; k < this.bubblesArr.length; k++){
                     if(this.bulletsArr.length != 0 ){
@@ -77,6 +75,7 @@ class Game {
                             if (a >= Math.sqrt((x * x) + ( y * y ))){
                                 if (this.bubblesArr[k].bubbleRadius >= 40)  {
                                     if(k == 0){
+                                        this.score += (300 - (this.bubblesArr[k].bubbleRadius * 3 ))
                                         this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY , 3, -7));
                                         this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX - 60), this.bubblesArr[k].bubbleY, -3, -7));
                                         this.bubblesArr = this.bubblesArr.slice(1);
@@ -91,6 +90,7 @@ class Game {
                                         }
                                     }
                                     else {
+                                        this.score += (300 - (this.bubblesArr[k].bubbleRadius * 3))
                                         this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
                                         this.bubblesArr.push(new Bubble(this.ctx, this.canvas, this.bubblesArr[k].bubbleRadius - 15, (this.bubblesArr[k].bubbleX - 60), this.bubblesArr[k].bubbleY, -3, -7));
                                         this.bubblesArr = this.bubblesArr.slice(0, k).concat(this.bubblesArr.slice(k+1));
@@ -108,6 +108,7 @@ class Game {
                             }
                                 else {
                                     if (k == 0) {
+                                        this.score += (300 - (this.bubblesArr[k].bubbleRadius * 3))
                                         this.bubblesArr.push(new Bubble(this.ctx, this.canvas, 70, (this.bubblesArr[k].bubbleX + 60), this.bubblesArr[k].bubbleY, 3, -7));
                                         this.bubblesArr = this.bubblesArr.slice(1);
                                         if (b == 0) {
@@ -143,8 +144,12 @@ class Game {
         }
 
         gameOver(){
-            
-            this.notHit = false;           
+            this.notHit = false; 
+            document.getElementById("retryMenu").style.display = "flex";
+            document.getElementById("retryButton").addEventListener("click", () => {
+                document.getElementById("retryMenu").style.display = 'none';
+                document.location.reload();
+            })
         }
 
         playerHitDetection(){

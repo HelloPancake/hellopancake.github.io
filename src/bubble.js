@@ -18,7 +18,6 @@ class Bubble {
     }
     
     drawBubble(){
-        
         this.bubbleConstraint();
         this.ctx.beginPath();
         this.ctx.arc(this.bubbleX, this.bubbleY, this.bubbleRadius, 0, Math.PI * 2);
@@ -31,7 +30,6 @@ class Bubble {
         this.dy += this.grav;
         this.bubbleX += this.dx;
         this.bubbleY += this.dy;
-        
     }
     
     bubbleConstraint() {
