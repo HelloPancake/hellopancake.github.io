@@ -84,12 +84,12 @@ html {
     display: none;
     align-items: center;
     justify-content: center;
-    background-color:  rgb(226, 187, 231);
+    background-color: rgb(238, 151, 219);
     flex-direction: column;
     width: 50%;
     z-index: 2;
     margin: 0;
-    top: 35%;
+    top: 25%;
     left: 25%;
     border-radius: 1.5vh;
     position: absolute;
@@ -128,7 +128,7 @@ html {
     width: 50%;
     z-index: 2;
     margin: auto;
-    top: 25%;
+    top: 18%;
     left: 25%;
     border-radius: 1.5vh;
     position: absolute;
