@@ -20,16 +20,15 @@ class Game {
         }
     }
         draw() {
-
             if(this.notHit){
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 this.player.drawPlayer();
-                this.bubblesArr.forEach(bub => bub.drawBubble());
                 this.playerHitDetection();
+                this.hitBubble();
+                this.bubblesArr.forEach(bub => bub.drawBubble());
                 if(this.bulletsArr.length != 0){
                         this.bulletsArr.forEach(bullet => bullet.drawBullet());
                 }
-                this.hitBubble();
                 this.drawScore();
                 this.bulletCheck();
             }
@@ -82,9 +81,9 @@ class Game {
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);
                                         }
-                                        else if (b == this.bulletsArr.length - 1){
-                                            this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
-                                        }
+                                        // else if (b == this.bulletsArr.length - 1){
+                                        //     this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
+                                        // }
                                         else {
                                             this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
                                         }
@@ -97,9 +96,9 @@ class Game {
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);
                                         }
-                                        else if (b == this.bulletsArr.length - 1) {
-                                            this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
-                                        }
+                                        // else if (b == this.bulletsArr.length - 1) {
+                                        //     this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
+                                        // }
                                         else {
                                                 this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
                                         };
@@ -114,9 +113,9 @@ class Game {
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);
                                         }
-                                        else if (b == this.bulletsArr.length - 1) {
-                                            this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
-                                        }
+                                        // else if (b == this.bulletsArr.length - 1) {
+                                        //     this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
+                                        // }
                                         else {
                                             this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
                                         }
@@ -128,9 +127,9 @@ class Game {
                                         if (b == 0) {
                                             this.bulletsArr = this.bulletsArr.slice(1);
                                         }
-                                        else if (b == this.bulletsArr.length - 1) {
-                                            this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
-                                        }
+                                        // else if (b == this.bulletsArr.length - 1) {
+                                        //     this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
+                                        // }
                                         else {
                                             this.bulletsArr = this.bulletsArr.slice(0, b).concat(this.bulletsArr.slice(b + 1));
                                         };
@@ -180,8 +179,7 @@ class Game {
 
                 let dx = distX - this.player.playerWidth / 2;
                 let dy = distY - this.player.playerHeight / 2;
-                return (dx * dx + dy * dy <= (bubble.bubbleRadius * bubble.bubbleRadius));
-            
+                return (dx * dx + dy * dy <= (bubble.bubbleRadius * bubble.bubbleRadius));   
         }
 
         shootDownHandler(e) {
