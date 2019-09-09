@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     var database = firebase.database();
     var ref = database.ref('scores');
     ref.on('value', gotData, errData)
-    
-    
+
+
     function gotData(data) {
         var scores = data.val();
         var values = Object.values(scores);
         console.log(values);
-    
+
         // High Scores
         let sortedScores = values.sort(function (a, b) {
             if (a.score > b.score) {
@@ -40,23 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
             var initials = sortedScores[i].name;
             var points = sortedScores[i].score;
             let li = document.createElement('div');
-            let textnode = document.createTextNode(initials + ": " + points);  
-            li.appendChild(textnode);  
+            let textnode = document.createTextNode(initials + ": " + points);
+            li.appendChild(textnode);
             document.getElementById("scoreList").appendChild(li);
         }
-        
+
     }
 
-    function errData(err){
+    function errData(err) {
         console.log(err);
         console.log("error");
     }
-    
+
     // Starting game
     document.getElementById("startButton").addEventListener("click", () => {
         document.getElementById('landingMenu').style.display = 'none';
         const game = new Game();
-        setInterval(game.draw, 9);  
+        setInterval(game.draw, 9);
         document.getElementById("initialSubmitButton").addEventListener("click", () => {
             let name = document.getElementById("initialSubmit").value.slice(0, 8);
             let data = {
@@ -68,4 +68,3 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 });
-

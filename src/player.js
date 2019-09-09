@@ -1,4 +1,4 @@
-class Player{
+class Player {
     constructor(ctx, canvas) {
         this.canvas = canvas;
         this.ctx = ctx;
@@ -13,7 +13,7 @@ class Player{
         document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
 
     }
-    
+
     drawPlayer() {
         this.move();
         // this.shoot();
@@ -25,19 +25,19 @@ class Player{
         this.ctx.strokeStyle = "black";
         this.ctx.stroke();
         this.ctx.closePath();
-        
+
     }
 
     keyDownHandler(e) {
         if (e.key == 'right' || e.key == 'ArrowRight') {
             this.rightPressed = true;
         }
-        else if (e.key == 'left' || e.key == 'ArrowLeft'){            
+        else if (e.key == 'left' || e.key == 'ArrowLeft') {
             this.leftPressed = true;
         }
     }
-    
-    keyUpHandler(e){
+
+    keyUpHandler(e) {
         if (e.key == 'right' || e.key == 'ArrowRight') {
             this.rightPressed = false;
         }
@@ -45,12 +45,12 @@ class Player{
             this.leftPressed = false;
         }
     }
-    
-    move(){
-        if(this.rightPressed && this.playerX < (this.canvas.width - this.playerWidth)){
+
+    move() {
+        if (this.rightPressed && this.playerX < (this.canvas.width - this.playerWidth)) {
             this.playerX += 5;
         }
-        if(this.leftPressed && this.playerX > 0) {
+        if (this.leftPressed && this.playerX > 0) {
             this.playerX -= 5;
         }
     }

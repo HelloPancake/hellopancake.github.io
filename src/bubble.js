@@ -1,6 +1,5 @@
-
 class Bubble {
-    constructor(ctx, canvas, radius, x, y, dx, dy){
+    constructor(ctx, canvas, radius, x, y, dx, dy) {
         this.canvas = canvas;
         this.ctx = ctx;
         this.bubbleX = x;
@@ -16,8 +15,8 @@ class Bubble {
         this.bubbleRadius = radius;
         // x, y, radius
     }
-    
-    drawBubble(){
+
+    drawBubble() {
         this.bubbleConstraint();
         this.ctx.beginPath();
         this.ctx.arc(this.bubbleX, this.bubbleY, this.bubbleRadius, 0, Math.PI * 2);
@@ -31,14 +30,14 @@ class Bubble {
         this.bubbleX += this.dx;
         this.bubbleY += this.dy;
     }
-    
+
     bubbleConstraint() {
         if (this.bubbleX + this.dx > this.canvas.width - (this.bubbleRadius) || this.bubbleX + this.dx < this.bubbleRadius) {
             this.dx = -(this.dx);
         }
         if (this.bubbleY + this.dy < this.bubbleRadius || this.bubbleY + this.dy > this.canvas.height - this.bubbleRadius) {
             this.dy = -(this.dy + this.grav);
-        }  
+        }
     }
 }
 
