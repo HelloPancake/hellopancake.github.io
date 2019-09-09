@@ -38,7 +38,7 @@ class Game {
             this.hitBubble();
         }
         
-        
+
         drawScore() {
             this.ctx.font = "30px Ubuntu";
             this.ctx.fillStyle = "#90EE90";
